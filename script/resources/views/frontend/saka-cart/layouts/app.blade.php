@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ App::getlocale() }}">
+<html lang="{{ App::getlocale() }}" dir="{{ isRtl(str_replace('_', '-', app()->getLocale())) ? 'rtl' : 'ltr'}}">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -35,10 +35,13 @@
 
         <!--====== App ======-->
         <link rel="stylesheet" href="{{ asset('frontend/saka-cart/css/app.css') }}">
-      
+        
          @stack('css')
         <!-- FOR STYLE -->
         {{ load_header() }}
+        @if(isRtl(str_replace('_', '-', app()->getLocale())))
+        <link rel="stylesheet" href="{{ asset('frontend/saka-cart/css/rtl.css') }}">
+        @endif
     </head>
 <body class="config">
     

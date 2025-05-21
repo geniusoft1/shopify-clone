@@ -133,6 +133,7 @@
 									<option  @if($plan_info->qr_code  == false || $plan_info->qr_code  == 'false') selected @endif value=false >{{ __('Disable') }}</option>
 								</select>
 							</div>
+							
 							<div class="form-group">
 								<label>{{ __('Facebook Pixel') }}</label>
 								<select class="form-control" name="facebook_pixel">

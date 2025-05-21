@@ -21,7 +21,7 @@ class CreateDomainsTable extends Migration
             $table->integer('status')->default(1);
             $table->integer('type')->default(1);//1=subdomain 2= customdomain
             $table->date('will_expire')->nullable();
-            $table->json('data')->nullable();
+            $table->text('data')->nullable();
             $table->integer('is_trial')->default(1);
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('template_id')->default(1);

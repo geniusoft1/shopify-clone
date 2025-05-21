@@ -4526,6 +4526,38 @@ input::-ms-clear {
 /**
   * Variations
  */
+
+.size__checkbox {
+  position: relative;
+  margin: 0 12px 12px 0; 
+}
+
+.size__checkbox [type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer; 
+}
+
+.size__checkbox-label {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 7px 15px;
+  background-color: #ffffff;
+  font-size: 13px;
+  color: #333333;
+  cursor: pointer;
+  display: inline-block; 
+}
+
+.size__checkbox input:checked + label {
+  border-color: #333333; 
+}
+
+
 .pd-detail__color, .pd-detail__size {
   display: -ms-flexbox;
   display: flex;
@@ -4570,11 +4602,13 @@ input::-ms-clear {
   background-color: inherit; }
 
 .color__radio input:checked + label:before {
-  border-color: #d2d2d2; }
+  border-color: #d2d2d2; 
+}
 
 .size__radio {
   position: relative;
-  margin: 0 12px 12px 0; }
+  margin: 0 12px 12px 0; 
+}
 
 .size__radio [type="radio"] {
   position: absolute;
@@ -4584,7 +4618,8 @@ input::-ms-clear {
   height: 100%;
   z-index: 2;
   opacity: 0;
-  cursor: pointer; }
+  cursor: pointer; 
+}
 
 .size__radio-label {
   border: 1px solid rgba(0, 0, 0, 0.08);
@@ -4593,10 +4628,53 @@ input::-ms-clear {
   font-size: 13px;
   color: #333333;
   cursor: pointer;
-  display: inline-block; }
+  display: inline-block; 
+}
 
 .size__radio input:checked + label {
-  border-color: #333333; }
+  border-color: #333333; 
+}
+
+.color__checkbox {
+  position: relative;
+  line-height: 1.89;
+  margin-right: 36px;
+  display: inline-block; }
+
+.color__checkbox [type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 0;
+  min-width: 30px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  cursor: pointer; }
+
+.color__checkbox-label {
+  position: initial;
+  display: inline-block; }
+
+.color__checkbox-label:before, .color__checkbox-label:after {
+  content: '';
+  width: 30px;
+  height: 30px;
+  display: block;
+  border: 2px solid transparent;
+  z-index: 0;
+  position: absolute;
+  left: 0;
+  top: 0; }
+
+.color__checkbox-label:after {
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+  background-color: inherit; }
+
+.color__checkbox input:checked + label:before {
+  border-color: #d2d2d2; 
+}
 
 .pd-detail__policy-list {
   margin: 0;
@@ -5681,6 +5759,7 @@ input::-ms-clear {
   text-transform: uppercase;
   font-weight: 600;
   font-size: 12px;
+  white-space: nowrap;
   }
 
 .mega-menu-list > ul > li:hover  {
@@ -5757,7 +5836,6 @@ input::-ms-clear {
   .mega-menu {
     display: none;
     padding: 30px;
-    width: 28%;
     background-color: #ffffff;
     box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.13);
     position: absolute;
@@ -6511,11 +6589,10 @@ input::-ms-clear {
     right: 10px;
     z-index: 9999;
 }
-@media (max-width: 576px){
+@media (max-width: 576px)
 .whatsapp-btn {
     width: 40px;
     height: 40px;
-}
 }
 .whatsapp-btn {
     background-color: #25d366;
@@ -6745,80 +6822,7 @@ svg {
    padding: 5px 5px;
   background-color: rgba(255, 255, 255, 0.98);
 }
-.size__checkbox {
-  position: relative;
-  margin: 0 12px 12px 0; 
-}
-
-.size__checkbox [type="checkbox"] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  opacity: 0;
-  cursor: pointer; 
-}
-
-.size__checkbox-label {
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  padding: 7px 15px;
-  background-color: #ffffff;
-  font-size: 13px;
-  color: #333333;
-  cursor: pointer;
-  display: inline-block; 
-}
-
-.size__checkbox input:checked + label {
-  border-color: #333333; 
-}
-
-
-.color__checkbox {
-  position: relative;
-  line-height: 1.89;
-  margin-right: 36px;
-  display: inline-block; }
-
-.color__checkbox [type="checkbox"] {
-  position: absolute;
-  left: 0;
-  top: 0;
-  min-width: 30px;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-  opacity: 0;
-  cursor: pointer; }
-
-.color__checkbox-label {
-  position: initial;
-  display: inline-block; }
-
-.color__checkbox-label:before, .color__checkbox-label:after {
-  content: '';
-  width: 30px;
-  height: 30px;
-  display: block;
-  border: 2px solid transparent;
-  z-index: 0;
-  position: absolute;
-  left: 0;
-  top: 0; }
-
-.color__checkbox-label:after {
-  -webkit-transform: scale(0.6);
-          transform: scale(0.6);
-  background-color: inherit; }
-
-.color__checkbox input:checked + label:before {
-  border-color: #d2d2d2; 
-}
-
-@media (min-width: 1025px) {
-.pl-12{
-  padding-left: 12px;
-}
+.address-inof {
+    display: flex;
+    gap: 3px;
 }

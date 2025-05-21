@@ -13,7 +13,7 @@
           
           <p class="mb-4 pr-5">{{ $header->description ?? '' }}</p>
           <div class="btn-container ">
-            <a href="#priceing" class="btn btn-main-2 btn-icon btn-round-full">{{ __('Get Start Now') }} <i class="icofont-simple-right ml-2"></i></a>
+            <a href="#pricing" class="btn btn-main-2 btn-icon btn-round-full">{{ __('Get Start Now') }} <i class="icofont-simple-right ml-2"></i></a>
           </div>
         </div>
       </div>
@@ -196,7 +196,7 @@
   </div>
 </section>
 
-<section class="section gray-bg" id="priceing">
+<section class="section gray-bg" id="pricing">
    <div class="container">
       <div class="container">
          <div class="row justify-content-center">
@@ -282,6 +282,7 @@
           <del>{{ __('Facebook Pixel') }}</del>
           @endif 
          </li>
+       
 
          <li class="mb-3">
           @if($plan->whatsapp == 'true')
@@ -314,9 +315,9 @@
            {{ __('Image Optimization') }}
          </li>
       </ul>
-      @if($row->is_trial == 1)
-      <a href="{{ route('merchant.form',$row->id) }}" class="btn site_color text-white btn-block p-2 shadow rounded-pill">{{ __('Register') }}</a>
-      @endif
+      
+      <a href="{{ route('merchant.form',$row->id) }}" class="btn site_color text-white btn-block p-2 shadow rounded-pill">{{ __('Free Register') }}</a>
+     
      </div>
     </div>
 @endforeach

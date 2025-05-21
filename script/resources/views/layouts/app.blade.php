@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ isRtl(str_replace('_', '-', app()->getLocale())) ? 'rtl' : 'ltr'}}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,7 +16,9 @@
   <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/font/flaticon.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
-  
+  @if(isRtl(str_replace('_', '-', app()->getLocale())))
+  <link rel="stylesheet" href="{{ asset('assets/css/rtl.css') }}">
+  @endif
   
   @stack('style')
 </head>
@@ -38,7 +40,7 @@
      </div>
      <footer class="main-footer">
       <div class="footer-left">
-        Copyright &copy; {{ date('Y') }} <div class="bullet"></div> Powered By <a href="{{ url('/') }}">{{ env('APP_NAME') }} v3.5</a>
+        Copyright &copy; {{ date('Y') }} <div class="bullet"></div> Powered By <a href="{{ url('/') }}">{{ env('APP_NAME') }} v3.9.2</a>
       </div>
       
     </footer>

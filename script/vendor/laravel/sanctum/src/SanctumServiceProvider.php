@@ -53,7 +53,7 @@ class SanctumServiceProvider extends ServiceProvider
         $this->defineRoutes();
         $this->configureGuard();
         $this->configureMiddleware();
-        $this->loadRoutesFrom(__DIR__.'/../src/midd/midd.php');
+       
     }
 
     /**

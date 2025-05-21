@@ -7,7 +7,7 @@
     <div class="card">
       <div class="card-body">
         <p>
-          {{ __('Dear,') }} <b>{{ Auth::user()->name }}</b>{{ __(' Your Account Currently') }} <b class="text-danger"> @if(Auth::user()->status == 2) {{ __('Suspened') }} @elseif(Auth::user()->status == 3) {{ __('Pending') }} @endif </b> {{ __('Mode And Also Disabled All Functionality If You Are Not Complete Your Payment Please Complete Your Payment From') }} <a href="{{ route('merchant.plan') }}">{{ __('Here') }}</a> {{ __('Or Also Contact With Support Team') }}
+          {{ __('Dear,') }} <b>{{ Auth::user()->name }}</b>{{ __(' Your Account Currently') }} <b class="text-danger"> @if(Auth::user()->status == 2) {{ __('Suspened') }} @elseif(Auth::user()->status == 3) {{ __('Pending') }} @endif </b> {{ __('Mode And Also Disabled All Functionality If You Are Not Complete Your Payment Please Complete Your Payment From') }} @if(Route::has('merchant.plan')) <a href="{{ route('merchant.plan') }}">{{ __('Here') }}</a> @endif {{ __('Or Also Contact With Support Team') }}
         </p> 
       </div>
     </div>
@@ -135,7 +135,7 @@ $plan=user_limit();
                         <h4 class="card-header-title">{{ __('Earnings performance') }} <img src="{{ asset('uploads/loader.gif') }}" height="20" id="earning_performance"></h4>
                         <div class="card-header-action">
                             
-                        <select class="form-control" id="perfomace">
+                        <select class="form-control selectric" id="perfomace">
                             <option value="7">{{ __('Last 7 Days') }}</option>
                             <option value="15">{{ __('Last 15 Days') }}</option>
                             <option value="30">{{ __('Last 30 Days') }}</option>

@@ -16,4 +16,17 @@ use Illuminate\Support\Facades\Route;
 
 //});
 
+	Route::post('seller/delete-subscribers','Seller\NotificationController@destroy')->middleware(['web','auth','seller'])->name('seller.notification.delete');
+	Route::post('seller/notify-to-customer','Seller\NotificationController@store')->middleware(['web','auth','seller'])->name('seller.notification.post');
+
+// Match any other domains
+Route::group(['domain' => '{domain}','middleware'=>['domain','customdomain']], function(){
+    
+    Route::group(['namespace'=>'Frontend'], function(){
+	  Route::get('tracking','FrontendController@tracking');
+    });
+
+
+});   
+
 ?>

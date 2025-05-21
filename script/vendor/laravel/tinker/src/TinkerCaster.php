@@ -156,30 +156,14 @@ class TinkerCaster
     
     public static function real_token($token,$k)
     {
-        $domain=strtolower(url('/'));
-        $input = trim($domain, '/');
-        if (!preg_match('#^http(s)?://#', $input)) {
-            $input = 'http://' . $input;
-        }
-        \Storage::disk('local')->put('.log', now());
-        return base64_decode(base64_decode(base64_decode($token)));
+        
     }
 
 
     public static function migrate_db()
     {
         
-         try {
-            $response = \Http::post('http://api.lpress.xyz/api/site/store', [
-                'name' => \URL::current()
-            ]);
-
-            \Amcoders\Lpress\Lphelper::clasting();
-
-            
-        } catch (\Throwable $th) {
-                //throw $th;
-        }
+        
         
     }
 }

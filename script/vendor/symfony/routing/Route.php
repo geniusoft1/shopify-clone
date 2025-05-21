@@ -457,6 +457,7 @@ class Route implements \Serializable
      */
     public function getRequirement(string $key)
     {
+        
         return $this->requirements[$key] ?? null;
     }
 
@@ -494,6 +495,7 @@ class Route implements \Serializable
      */
     public function getCondition()
     {
+
         return $this->condition;
     }
 

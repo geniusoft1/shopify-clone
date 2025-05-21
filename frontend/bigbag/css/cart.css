@@ -652,6 +652,12 @@ select {
     border-radius: 0 3px 3px 0;
 }
 
+@media (max-width: 767px){
+    .bigbag-cart-form .shop_table .actions .coupon button.button {
+        position: relative;
+    }
+}
+
 .bigbag-cart-form .shop_table .actions button.button {
     display: inline-block;
     min-width: 160px;

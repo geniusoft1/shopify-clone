@@ -51,7 +51,15 @@ function domain_info($key="all",$type=false)
 }
 
 
-
+function isRtl($param = 'en')
+{
+	$arr=['ar','dv','he','ku','fa','ur'];
+	if (in_array($param,$arr)) {
+		return true;
+	}
+	return false;
+	
+}
 
 function base_view()
 {

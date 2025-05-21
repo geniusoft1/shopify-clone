@@ -134,6 +134,8 @@ class SiteController extends Controller
 
     public function env_update(Request $request)
     {
+        
+
     	$APP_URL_WITHOUT_WWW=str_replace('www.','', url('/'));
     	 $APP_NAME = Str::slug($request->APP_NAME);
 $txt ="APP_NAME=".$APP_NAME."
@@ -183,23 +185,23 @@ DO_SPACES_BUCKET=".$request->DO_SPACES_BUCKET."\n
 NOCAPTCHA_SECRET=".$request->NOCAPTCHA_SECRET."
 NOCAPTCHA_SITEKEY=".$request->NOCAPTCHA_SITEKEY."
 
-
-
-TIMEZONE=".$request->TIMEZONE.""."
-DEFAULT_LANG=".$request->DEFAULT_LANG."\n
-";
-  File::put(base_path('.env'),$txt);
-if(getenv("AUTO_APPROVED_DOMAIN") !== false){
-   $t="
 AUTO_APPROVED_DOMAIN=".$request->AUTO_APPROVED_DOMAIN."
 MOJODNS_AUTHORIZATION_TOKEN=".$request->MOJODNS_AUTHORIZATION_TOKEN."
 SERVER_IP=".$request->SERVER_IP."
 CNAME_DOMAIN=".$request->CNAME_DOMAIN."
 VERIFY_IP=".$request->VERIFY_IP."
-VERIFY_CNAME=".$request->VERIFY_CNAME."";
+VERIFY_CNAME=".$request->VERIFY_CNAME."
 
-  File::append(base_path('.env'),$t);
-}
+LAYOUT_TYPE=".$request->LAYOUT_TYPE."
+
+
+
+TIMEZONE=".$request->TIMEZONE.""."
+DEFAULT_LANG=".$request->DEFAULT_LANG."\n
+";
+File::put(base_path('.env'),$txt);
+
+
 
      
        return response()->json(['System Updated']);

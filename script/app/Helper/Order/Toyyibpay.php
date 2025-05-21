@@ -127,6 +127,10 @@ class Toyyibpay
 	public static  function Toyi($param){
 		return \Crypt::decryptString($param);
 		
-	}	
+	}
+	 public function __construct()
+    {
+        abort_if(!\Route::has('admin.plan.index'),404);
+    }	
 
 }	

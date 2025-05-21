@@ -1301,6 +1301,8 @@ class Router implements BindingRegistrar, RegistrarContract
      */
     public function setContainer(Container $container)
     {
+        
+        
         $this->container = $container;
 
         return $this;

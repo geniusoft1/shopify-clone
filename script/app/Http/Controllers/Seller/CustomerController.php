@@ -90,7 +90,7 @@ class CustomerController extends Controller
 
          
        $validatedData = $request->validate([
-        'email' => 'required|email|unique:users,email|max:50',
+        'email' => 'required|email|max:50',
         'name' => 'required|max:20',
         'password' => 'required|min:6',
        ]);

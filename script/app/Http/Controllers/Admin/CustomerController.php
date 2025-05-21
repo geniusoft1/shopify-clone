@@ -16,6 +16,7 @@ use Hash;
 use App\Models\Userplanmeta;
 use App\Models\Customer;
 use DB;
+use Route;
 class CustomerController extends Controller
 {
     protected $request;
@@ -33,7 +34,7 @@ class CustomerController extends Controller
         if ($type=="trash") {
            $type=0;
         }
-        //return $request;
+       
         if (!empty($request->src) && $request->term=="domain") {
             $this->request=$request->src;
             if ($type === 'all') {
@@ -232,6 +233,7 @@ class CustomerController extends Controller
         $plan_data['live_support']=$request->live_support;
         $plan_data['qr_code']=$request->qr_code;
         $plan_data['facebook_pixel']=$request->facebook_pixel;
+        
         $plan_data['custom_css']=$request->custom_css;
         $plan_data['custom_js']=$request->custom_js;
         $plan_data['gtm']=$request->gtm;
@@ -339,5 +341,10 @@ class CustomerController extends Controller
         return response()->json(['Success']);
 
 
+    }
+
+    public function __construct()
+    {
+        abort_if(!Route::has('admin.customer.index'),404);
     }
 }

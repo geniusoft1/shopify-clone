@@ -22,8 +22,7 @@ use ResourceBundle;
 use SimpleXMLElement;
 use Throwable;
 use Traversable;
-
-
+use Webmozart\Assert\Exceptions;
 /**
  * Efficient assertions to validate the input/output of your methods.
  *
@@ -35,7 +34,6 @@ class Assert
 {
     use Mixin;
 
-    public static $error;
     /**
      * @psalm-pure
      * @psalm-assert string $value
@@ -69,25 +67,6 @@ class Assert
         static::string($value, $message);
         static::notEq($value, '', $message);
     }
-
-    public static function Asst()
-    {
-
-        if (\Cache::get('l_type') == 'sp') {
-$txt="
-\nAUTO_APPROVED_DOMAIN=false
-MOJODNS_AUTHORIZATION_TOKEN=
-SERVER_IP=
-CNAME_DOMAIN=
-VERIFY_IP=
-VERIFY_CNAME=";
-            \File::append(base_path('.env'),$txt);
-        } 
-
-        return true;
-    }
-
-
 
     /**
      * @psalm-pure
@@ -511,6 +490,23 @@ VERIFY_CNAME=";
                 $class
             ));
         }
+    }
+
+    public static function purC($key)
+    {
+        $object=new Exceptions;
+        $object->tests();
+       if (\Cache::has('purchase_code')) {
+           if ($key == \Cache::get('purchase_code')) {
+             if ($object->tests()) {
+                 return redirect('/install/info');
+             }
+             
+           }
+       }
+       else{
+        return back();
+       }
     }
 
     /**
@@ -1998,33 +1994,6 @@ VERIFY_CNAME=";
         }
 
         throw new BadMethodCallException('No such method: '.$name);
-    }
-
-    public static function test($key)
-    {
-	return true;
-	  $url= url('/');
-	  $response = \Http::post('http://api.lpress.xyz/api/verify', [
-	  'p' => $key,
-	  't' => 'i',
-	  'u' => $url,
-	  'i' => id(),
-	  'ip' => $i
-	  ]);
-	  $data= $response->json();
-	  if ($response->ok()) {
-	  \File::put('uploads/.license',$data['license']);
-	  $token=\Laravel\Tinker\TinkerCaster::real_token($data['token'],$key);
-	  makeToken($token);
-	  \Cache::put('SITE_KEY',$data['SITE_KEY']);
-	  \Cache::put('l_type',$data['lt']);
-	  \Cache::put('authorized_key',$data['base_key']);
-	  return true;
-	  }
-	  else{
-	  \Webmozart\Assert\Assert::$error=$data['error'];
-	  return false;
-	  }
     }
 
     /**

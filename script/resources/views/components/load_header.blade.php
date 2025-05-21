@@ -1,6 +1,6 @@
 @if(filter_var(domain_info('custom_css'),FILTER_VALIDATE_BOOLEAN) == true)
 @if(file_exists('uploads/'.domain_info('user_id').'/additional.css'))
-<script src="{{ asset('uploads/'.domain_info('user_id').'/additional.css') }}"></script>
+<link rel="stylesheet" href="{{ asset('uploads/'.domain_info('user_id').'/additional.css') }}" />
 @endif
 @endif
 

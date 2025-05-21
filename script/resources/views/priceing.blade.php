@@ -83,6 +83,7 @@
            @endif 
             
          </li>
+         
          <li class="mb-3">
           @if($plan->facebook_pixel == 'true')
            {{ __('Facebook Pixel') }}
@@ -122,9 +123,9 @@
            {{ __('Image Optimization') }}
          </li>
       </ul>
-      @if($row->is_trial == 1)
-      <a href="{{ route('merchant.form',$row->id) }}" class="btn site_color text-white btn-block p-2 shadow rounded-pill">{{ __('Register') }}</a>
-      @endif
+      
+      <a href="{{ route('merchant.form',$row->id) }}" class="btn site_color text-white btn-block p-2 shadow rounded-pill">{{ __('Free Register') }}</a>
+     
      </div>
     </div>
 @endforeach

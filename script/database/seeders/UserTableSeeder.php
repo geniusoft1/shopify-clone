@@ -35,7 +35,45 @@ class UserTableSeeder extends Seeder
     		'email' => 'admin@admin.com',
     		'password' => Hash::make('rootadmin'),
     	]);
-    	
+    	$user=new User;
+        $user->name='bigbag';
+        $user->email='bigbag@email.com';
+        $user->password=Hash::make('rootadmin');
+        $user->role_id=3;
+        $user->status=1;
+        $user->domain_id=1;
+        $user->save();
+
+
+        $user=new User;
+        $user->name='arafa cart';
+        $user->email='arafa-cart@email.com';
+        $user->password=\Hash::make('rootadmin');
+        $user->role_id=3;
+        $user->status=1;
+        $user->domain_id=2;
+        $user->save();
+
+
+         $user=new User;
+        $user->name='saka cart';
+        $user->email='saka-cart@email.com';
+        $user->password=\Hash::make('rootadmin');
+        $user->role_id=3;
+        $user->status=1;
+        $user->domain_id=3;
+        $user->save();
+
+
+        $user=new User;
+        $user->name='bazar';
+        $user->email='bazar@email.com';
+        $user->password=\Hash::make('rootadmin');
+        $user->role_id=3;
+        $user->status=1;
+        $user->domain_id=4;
+        $user->save();
+
     	
     	$roleSuperAdmin = Role::create(['name' => 'superadmin']);
         //create permission
@@ -292,6 +330,7 @@ class UserTableSeeder extends Seeder
                 'facebook_pixel'=>false,
                 'custom_css'=>false,
                 'custom_js'=>false,
+              
                 'gtm'=>false,
                 'location_limit'=>0,
                 'category_limit'=>0,
@@ -326,6 +365,7 @@ class UserTableSeeder extends Seeder
                 'facebook_pixel'=>true,
                 'custom_css'=>true,
                 'custom_js'=>true,
+               
                 'gtm'=>true,
                 'location_limit'=>0,
                 'category_limit'=>0,
@@ -359,6 +399,7 @@ class UserTableSeeder extends Seeder
                 'facebook_pixel'=>true,
                 'custom_css'=>true,
                 'custom_js'=>true,
+               
                 'gtm'=>true,
                 'location_limit'=>10,
                 'category_limit'=>10,

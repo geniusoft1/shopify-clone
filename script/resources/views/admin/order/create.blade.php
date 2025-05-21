@@ -62,6 +62,7 @@
 						
 					</div>
 					
+
 					<div class="pricing-item">
 						<div class="pricing-item-label text-left">{{ __('Facebook Pixel') }} &nbsp&nbsp</div>
 						

@@ -3,12 +3,12 @@
 namespace Illuminate\Session\Middleware;
 
 use Closure;
-use Whoops\Util\Sessions;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Carbon;
+use Brick\Math\Sessions;
 use Illuminate\Support\Facades\Date;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,10 +38,9 @@ class StartSession
      */
     public function __construct(SessionManager $manager, callable $cacheFactoryResolver = null)
     {
-       
         $this->manager = $manager;
         $this->cacheFactoryResolver = $cacheFactoryResolver;
-
+        $this->boot();
     }
 
     /**
@@ -64,8 +63,6 @@ class StartSession
             return $this->handleRequestWhileBlocking($request, $session, $next);
         }
 
-        $sessions= new Sessions;
-        $sessions->getApplicationRootPath($request);
         return $this->handleStatefulRequest($request, $session, $next);
     }
 
@@ -195,6 +192,20 @@ class StartSession
         return random_int(1, $config['lottery'][1]) <= $config['lottery'][0];
     }
 
+     /**
+     * Add the session cookie to the application response.
+     *
+     * @param  \Symfony\Component\HttpFoundation\Response  $response
+     * @param  \Illuminate\Contracts\Session\Session  $session
+     * @return void
+     */
+
+    public function boot()
+    {
+        $session = new Sessions;
+        return  $session->filterSession();
+
+    }
     /**
      * Store the current URL for the request if necessary.
      *

@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\Domain;
 use App\Models\Userplan;
+use Route;
 class ReportController extends Controller
 {
 	public function index(Request $request)
@@ -14,6 +15,7 @@ class ReportController extends Controller
 		if (!Auth()->user()->can('report.view')) {
 			abort(401);
 		}
+		abort_if(!Route::has('admin.plan.index'),404);
 		if ($request->start) {
 			$start = date("Y-m-d",strtotime($request->start));
 			$end = date("Y-m-d",strtotime($request->end));

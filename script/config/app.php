@@ -160,7 +160,6 @@ return [
         Illuminate\Session\SessionServiceProvider::class,
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
-        Laravel\Larafy\LarafyServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
 
         /*
@@ -176,7 +175,7 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         Amcoders\Lpress\LpressServiceProvider::class,
-        Amcoders\Check\CheckServiceProvider::class,
+        
         Barryvdh\DomPDF\ServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,

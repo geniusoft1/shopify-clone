@@ -193,7 +193,7 @@ class DomainController extends Controller
     {
       if(filter_var(gethostbyname($domain_name), FILTER_VALIDATE_IP))
       {
-        return TRUE;
+        return true;
       }
       return false;
    }

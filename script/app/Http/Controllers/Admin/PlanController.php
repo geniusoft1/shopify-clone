@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Plan;
 use App\Models\User;
 use Auth;
+use Route;
 use App\Subscriber;
 class PlanController extends Controller
 {
@@ -60,6 +61,7 @@ class PlanController extends Controller
         $plan_data['live_support']=$request->live_support;
         $plan_data['qr_code']=$request->qr_code;
         $plan_data['facebook_pixel']=$request->facebook_pixel;
+      
         $plan_data['custom_css']=$request->custom_css;
         $plan_data['custom_js']=$request->custom_js;
         $plan_data['gtm']=$request->gtm;
@@ -140,6 +142,7 @@ class PlanController extends Controller
         $plan_data['live_support']=$request->live_support;
         $plan_data['qr_code']=$request->qr_code;
         $plan_data['facebook_pixel']=$request->facebook_pixel;
+      
         $plan_data['custom_css']=$request->custom_css;
         $plan_data['custom_js']=$request->custom_js;
         $plan_data['gtm']=$request->gtm;
@@ -181,5 +184,10 @@ class PlanController extends Controller
         
        }
         return response()->json(['Category Deleted']);
+    }
+
+    public function __construct()
+    {
+        abort_if(!Route::has('admin.plan.index'),404);
     }
 }

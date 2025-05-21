@@ -21,7 +21,7 @@
 14.0 Signin Signup Lost Password-Page
 15.0 FAQ-Page
 16.0 Dashboard-Pages
-17.0 Blog-Pages
+17.0 Blog-Pages 
 18.0 Product-Detail-Pages
 19.0 Shop-Pages
 20.0 Vendor Extension Pages
@@ -7940,15 +7940,15 @@ input::-ms-clear {
 	cursor: pointer;
 	color: #ffffff;
 }
-
-.mega-menu-list>ul>li>a {
-	display: block;
-	padding: 10px 22px;
-	color: #000000;
-	text-transform: uppercase;
-	font-weight: 600;
-	font-size: 12px;
-}
+.mega-menu-list > ul > li > a {
+  display: block;
+  padding: 10px 22px;
+  color: #000000;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  }
 
 .mega-menu-list>ul>li:hover {
 	background: linear-gradient(225deg, var(--main-theme-color), var(--main-theme-color))
@@ -8042,7 +8042,6 @@ input::-ms-clear {
 	.mega-menu {
 		display: none;
 		padding: 30px;
-		width: 28%;
 		background-color: #ffffff;
 		box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.13);
 		position: absolute;
@@ -9294,4 +9293,9 @@ svg {
 }
 .text-white{
 	color: #fff;
+}
+
+.address-inof {
+    display: flex;
+    gap: 3px;
 }

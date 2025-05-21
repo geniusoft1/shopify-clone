@@ -177,6 +177,7 @@
     </div>
   </div>
   <div class="col-lg-4 col-md-12 col-12 col-sm-12">
+    @if(Route::has('admin.customer.index'))
     <div class="card">
       <div class="card-header">
         <h4>{{ __('Recent Request') }}</h4>
@@ -202,7 +203,9 @@
         </div>
       </div>
     </div>
+    @endif
   </div>
+  @if(Route::has('admin.customer.index'))
   <div class="col-md-12 col-12 col-sm-12">
     <div class="card">
       <div class="card-header">
@@ -274,6 +277,7 @@
       </div>
     </div>
   </div>
+  @endif
 </div>
 </section>
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"  dir="{{ isRtl(str_replace('_', '-', app()->getLocale())) ? 'rtl' : 'ltr'}}">
    <head>
       <meta charset="UTF-8">
        <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +19,7 @@
       <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/icofont/icofont.min.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/slick-carousel/slick/slick.css') }}">
       <link rel="stylesheet" href="{{ asset('assets/frontend/plugins/slick-carousel/slick/slick-theme.css') }}">
+
 
      
 
@@ -43,8 +44,12 @@
 
          <!-- Main Stylesheet -->
       <link rel="stylesheet" href="{{ asset('assets/frontend/css/style.css') }}">
+     
       <link rel="stylesheet" href="{{ asset('uploads/additional.css') }}">
       @stack('style')
+      @if(isRtl(str_replace('_', '-', app()->getLocale())))
+      <link rel="stylesheet" href="{{ asset('assets/frontend/css/rtl.css') }}">
+      @endif
       <!--=====================================
          CSS LINK PART END
          =======================================-->

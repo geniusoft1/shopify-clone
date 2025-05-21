@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 use App\Useroption;
+use App\Models\Notification;
 class MarketingController extends Controller
 {
    
@@ -190,6 +191,11 @@ class MarketingController extends Controller
             $whatsapp= Useroption::where('user_id',Auth::id())->where('key','whatsapp')->first();
             $json=json_decode($whatsapp->value ?? '');
             return view('seller.marketing.whatsapp',compact('whatsapp','json'));
+        }
+
+        if ($param == 'push-notification') {
+            $posts= Notification::where('user_id',Auth::id())->latest()->paginate(30);
+            return view('seller.marketing.notification',compact('posts'));
         }
 
         abort(404);

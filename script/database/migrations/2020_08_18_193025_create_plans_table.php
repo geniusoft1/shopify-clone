@@ -19,7 +19,7 @@ class CreatePlansTable extends Migration
             $table->string('description');
             $table->double('price');
             $table->integer('days');
-            $table->json('data');
+            $table->text('data');
            
             $table->integer('status')->default(0);
             $table->integer('custom_domain')->default(0);

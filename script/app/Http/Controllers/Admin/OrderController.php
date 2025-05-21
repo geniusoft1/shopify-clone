@@ -14,6 +14,7 @@ use App\Domain;
 use App\Mail\SubscriptionMail;
 use Illuminate\Support\Facades\Mail;
 use DB;
+use Route;
 use App\Option;
 class OrderController extends Controller
 {
@@ -321,5 +322,10 @@ class OrderController extends Controller
         }
 
         return response()->json(['Success']);
+    }
+
+    public function __construct()
+    {
+        abort_if(!Route::has('admin.order.index'),404);
     }
 }

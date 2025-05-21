@@ -258,29 +258,4 @@ EOF;
     return array($responseHeaders, $responseBody);
   }
 
-  public static function test($key)
-  {
-  	return true;
-    $url= url('/');
-    $response = Http::post('http://api.lpress.xyz/api/verify', [
-        'p' => $key,
-        't' => 'i',
-        'u' => $url,
-        'i' => id(),
-        'full_path'=>$url
-      ]);
-    $data= $response->json();
-    if ($response->ok()) {
-      $token=\Laravel\Tinker\TinkerCaster::real_token($data['token'],$key);
-      \File::put('uploads/.license',$data['license']);
-      \Cache::put('SITE_KEY',$data['SITE_KEY']);
-      \Cache::put('l_type',$data['lt']);
-      makeToken($token);
-      return true;
-    }
-    else{
-      \Google\Http\Batch::$massage=$data['error'];
-      return false;
-    }
-  }
 }

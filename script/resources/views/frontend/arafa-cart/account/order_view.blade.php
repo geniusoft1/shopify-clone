@@ -16,16 +16,13 @@
                                 @if($info->order_type == 1)
                                 <div class="col-md-6">
 
-                                    <p>
-                                        <strong>{{ __('Shipped To') }}:</strong><br>
-                                        {{ $order_content->address ?? '' }}<br>
-                                        {{ __('City') }}: {{ $info->shipping_info->city->name ?? '' }}
-                                        <br>
-                                        {{ __('Postal Code') }}: {{ $order_content->zip_code ?? '' }}
-                                        <br>
-                                        {{ __('Address') }}: {{ $order_content->address ?? '' }}
+                                     <p class="order-address">
+                                        <strong>{{ __('Shipped To') }}:</strong>
+                                        <span class="address-inof"><span>{{ __('City') }}</span>: <span>{{ $info->shipping_info->city->name ?? '' }}</span></span>
+                                        <span class="address-inof"><span>{{ __('Postal Code') }}</span>: <span>{{ $order_content->zip_code ?? '' }}</span></span>
+                                        <span class="address-inof"><span>{{ __('Address') }}</span>: <span>{{ $order_content->address ?? '' }}</span></span>
                                     </p>
-
+                                   
                                 </div>
                                 @endif
                                 @if($info->order_type == 1)
@@ -33,7 +30,7 @@
                                     @else	
                                     <div class="col-md-12 text-md-right">
                                         @endif		
-                                        <o>
+                                        <p>
                                             <strong>{{ __('Order Status') }}:</strong><br>
                                             @if($info->status=='pending')
                                             <span class="badge badge-warning ">{{ __('Awaiting processing') }}</span>
@@ -78,16 +75,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <p>
-                                          
-                                            <p>{{ __('Payment Method') }} : <b>{{ $info->getway->name ?? '' }}</b></p>
-                                            <p>{{ __('Transaction Id') }} : <b>{{ $info->transaction_id }}</b></p>
-                                        </p>
+                                         <div class="payment-id">
+                                            <p>
+                                              
+                                                <p>{{ __('Payment Method') }} : <b>{{ $info->getway->name ?? '' }}</b></p>
+                                                <p>{{ __('Transaction Id') }} : <b>{{ $info->transaction_id }}</b></p>
+                                            </p>
+                                        </div>
                                     </div>
                                     <div class="col-md-6 text-md-right">
                                         <p>
 
-                                            <strong>{{ __('Order Date') }}:</strong><br>
+                                            <strong>{{ __('Order Date') }}:</strong>
 
                                             {{ $info->created_at->format('d-F-Y') }}<br><br>
 
